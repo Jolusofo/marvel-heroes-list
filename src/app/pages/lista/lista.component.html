@@ -1,0 +1,67 @@
+<div class="container">
+  <header>
+    <div class="container-titulo">
+      <div class="titulo-marvel-teste">
+        <div>
+          <h2 id="titulo-busca-marvel">BUSCA MARVEL </h2>
+          <div class="barra"></div>
+        </div>
+        <h2 id="titulo-teste">TESTE FRONT-END</h2>
+      </div>
+      <h2 id="titulo-nome-candidato">JOÃO LUCAS SOUZA DA FONSECA</h2>
+    </div>
+  </header>
+  <nav>
+    <div class="container-pesquisar">
+      <label for="">Nome do Personagem</label>
+      <input
+        type="text" name="pesquisa-personagem" id="pesquisa-personagem" placeholder="digite aqui o nome do personagem..." [(ngModel)]="pesquisaPersonagem" (input)="onSearchInputChange()"/>
+    </div>
+  </nav>
+  <section>
+    <div class="tabelaFixa" >
+    <table >
+      <thead>
+        <tr>
+          <th id="titulo-personagem"><div>Personagem</div></th>
+          <th id="titulo-series"><div>Séries</div></th>
+          <th id="titulo-eventos"><div>Eventos</div></th>
+        </tr>
+      </thead>
+        <tbody *ngIf="data">
+          <ng-container *ngFor="let item of data" >
+            <tr  (click)="abrirDialog(item)" >
+              <td id="personagem">
+                <div  class="conteudo">
+                  <img src="{{item.thumbnail.path + '.' + item.thumbnail.extension}}" alt="" /><span>{{ item.name }}</span>
+                </div>
+              </td>
+              <td id="serie">
+                <div class="conteudo">
+                  <div class="lista-dinamica"  id="lista-series" [innerHTML]="listarSeries(item.series)"></div>
+                </div>
+              </td>
+              <td id="eventos">
+                <div class="conteudo">
+                  <div class="lista-dinamica" id="lista-eventos" [innerHTML]="listarEventos(item.events)"></div>
+                </div>
+              </td>
+            </tr>
+          </ng-container>
+      </tbody>
+    </table>
+  </div>
+  </section>
+  <div class="container-paginacao">
+    <button class="paginacao-botao paginacao-botao-esquerdo" (click)="voltarPagina()" [disabled]="paginaAtual === 1">
+    </button>
+    <ul class="pagination">
+      <li *ngFor="let page of gerarNumeroPaginas()" [class.active]="page === (paginaAtual)">
+        <a (click)="irParaPagina(page)">{{ page }}</a>
+      </li>
+    </ul>
+    <button class="paginacao-botao paginacao-botao-direito" (click)="proximaPagina()" [disabled]="paginaAtual === totalPaginas">
+    </button>
+  </div>
+  <app-detalhe (fechar)="fecharDialog()" [personagemSelecionado] ="personagemSelecionado" *ngIf="dialogAberto"></app-detalhe>
+</div>

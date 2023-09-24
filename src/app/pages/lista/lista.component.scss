@@ -1,0 +1,351 @@
+
+.container{
+  position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0px -12px 0px #d42026;;
+}
+
+
+header {
+  margin: 20px 42px 0px;
+  .container-titulo {
+    display: flex;
+    justify-content: space-between;
+    font-size: 28px;
+    color: #d42026;
+  }
+  .titulo-marvel-teste {
+    display: flex;
+
+    .barra {
+      background-color: #d42026;
+      width: 54px;
+      height: 4px;
+    }
+  }
+
+  #titulo-busca-marvel {
+    font-family: "Roboto-Black";
+  }
+  #titulo-teste {
+    font-family: "Roboto-Light";
+  }
+  #titulo-nome-candidato {
+    font-family: "Roboto-Light";
+  }
+}
+nav {
+  margin-top: 34px;
+  .container-pesquisar {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    min-width: 20%;
+    padding-left: 42px;
+    gap: 5px;
+    input {
+      width: 400px;
+      height: 31px;
+      border: 1px solid #c0c0c0;
+      border-radius: 6px;
+      padding: 0px 8px 0px 8px;
+    }
+    label {
+      font-family: "Roboto-Light";
+      color: #d42026;
+    }
+  }
+}
+
+section {
+  margin: 34px 42px 0;
+  .tabelaFixa {
+    overflow-y: auto;
+    height: 63.1vh;
+  }
+  .tabelaFixa thead th {
+    position: sticky;
+    top: 0px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    thead {
+      th {
+        background-color: #d42026;
+
+        padding: 8px;
+        border-right: 10px solid #fff;
+        font-family: "Roboto-Light";
+        color: #fff;
+      }
+      #titulo-eventos {
+        border-right: 0px;
+        width: 25%;
+      }
+      #titulo-series {
+        width: 25%;
+      }
+      #titulo-eventos {
+        width: 50%;
+      }
+    }
+    tbody {
+      tr {
+        height: 112px;
+        max-height: 112px;
+        cursor: pointer;
+      }
+
+      tr:hover {
+        background-color: #d420263f;
+      }
+      td {
+        padding: 20px;
+        border-bottom: solid 4px #d420264f;
+        font-family: "Roboto-Light";
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      .conteudo {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 25px;
+      }
+      #serie {
+        span {
+          word-wrap: break-word;
+          width: 75%;
+        }
+      }
+      #personagem {
+        img {
+          width: 58px;
+          height: 58px;
+          object-fit: cover;
+          border-radius: 100%;
+        }
+        cursor: pointer;
+      }
+      .lista-dinamica {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 4px;
+        height: 70px;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+
+}
+.container-paginacao {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 0px 24px 0px;
+  ul {
+    display: flex;
+    padding: 0px 12px 0 12px;
+
+    li {
+      margin: 0px 20px 0 20px;
+      display: flex;
+      width: 32px;
+      height: 32px;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      opacity: 100%;
+      border-radius: 100%;
+      font-family: sans-serif;
+      border: solid 2px #d42026;
+
+      a {
+        color: #d42026;
+        font-family: "Roboto-Light";
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
+    .active {
+      background-color: #d42026 !important;
+
+      a {
+        color: #fff !important;
+        font-family: "Roboto-Light";
+      }
+    }
+  }
+  button {
+    &.paginacao-botao-esquerdo,
+    &.paginacao-botao-direito {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 16px 0 16px 24px;
+      content: "";
+      display: inline-block;
+      position: relative;
+
+      &.paginacao-botao-esquerdo {
+        border-color: #fff #fff #fff #d42026;
+        background-color: #fff;
+        border-width: 12px;
+        transform: rotate(180deg);
+        cursor: pointer;
+      }
+
+      &.paginacao-botao-direito {
+        border-color: #fff #fff #fff #d42026;
+        background-color: #fff;
+        border-width: 12px;
+        cursor: pointer;
+      }
+    }
+  }
+  button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+}
+@media (min-width: 300px) and (max-width: 500px) and (orientation: landscape) {
+  section {
+    margin: 12px 0px 0;
+  }
+
+  thead {
+    #titulo-series {
+      display: none;
+    }
+    #titulo-personagem {
+      width: 25%;
+    }
+    #titulo-eventos {
+      display: none;
+    }
+  }
+  tbody {
+    #personagem {
+      img {
+        width: 58px;
+        height: 58px;
+        object-fit: cover;
+        border-radius: 100%;
+      }
+      cursor: pointer;
+    }
+    #eventos {
+      display: none;
+    }
+    #serie {
+      display: none;
+    }
+  }
+}
+
+/*
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  /* CSS */
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  section {
+    margin: 12px 0px 0;
+
+    .tabelaFixa {
+      overflow-y: auto;
+      height: 64.4vh;
+    }
+  }
+
+  header {
+    .container-titulo {
+      .titulo-marvel-teste {
+        font-size: 16px;
+      }
+
+      #titulo-nome-candidato {
+        display: none;
+      }
+    }
+  }
+  nav {
+    .container-pesquisar {
+      padding-left: 0px;
+      align-items: center;
+      width: 80%;
+      padding-left: 20px;
+
+      label {
+        display: flex;
+        width: 100%;
+      }
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  thead {
+    #titulo-series {
+      display: none;
+    }
+    #titulo-personagem {
+      width: 25%;
+      border-right: 0px;
+    }
+    #titulo-eventos {
+      display: none;
+    }
+  }
+  tbody {
+    #personagem {
+      img {
+        width: 58px;
+        height: 58px;
+        object-fit: cover;
+        border-radius: 100%;
+      }
+      cursor: pointer;
+    }
+    #eventos {
+      display: none;
+    }
+    #serie {
+      display: none;
+    }
+  }
+
+  .container-paginacao{
+    padding: 18px 0px 24px 0px;
+
+    ul li {
+      margin: 0px 10px 0 10px;
+    }
+    .pagination{
+      padding: 0px 32px 0 32px;
+
+
+    }
+
+
+  }
+
+}

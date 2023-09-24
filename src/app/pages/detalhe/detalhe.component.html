@@ -1,0 +1,48 @@
+<div class="dialog-container">
+  <div class="dialog">
+    <div class="dialog-conteudo">
+      <div class="imagem-fundo" [ngStyle]="{ 'background-image': 'url(' + imagemFundo + ')' }" ></div>
+      <div class="container-titulo">
+        <h1>{{ nomePersonage }}</h1>
+        <a class="fechar" (click)="fecharDialog()">X</a>
+      </div>
+      <div class="container-descricao">
+        <span id="data-atualizacao" >Data da ultima atualização: {{ dataAtualizacao | date : "dd/MM/yyyy" }}</span>
+        <span id="descricao">{{ descricao }}</span>
+      </div>
+      <div class="container-listas">
+        <div *ngIf="dadosSeries?.data?.total !== 0" class="centralizacao">
+          <div class="informacoes-lista">
+            <span>Lista de series</span>
+            <span>total {{ dadosSeries?.data?.total }}</span>
+          </div>
+          <div class="container-listas-series">
+            <div class="dados-serie" *ngFor="let item of dadosSeries?.data?.results" >
+              <h3 *ngIf="item.title">{{ item.title }}</h3>
+              <span *ngIf="item.startYear">Ano {{ item.startYear }}</span>
+              <img src="{{ item.thumbnail.path + '.' + item.thumbnail.extension }}" alt="imagens-da-series" (click)="abrirNavegador(item.urls[0].url)" />
+            </div>
+          </div>
+        </div>
+        <div *ngIf="dadosEventos?.data?.total !== 0" class="centralizacao">
+          <div class="informacoes-lista">
+            <div><span>Lista de eventos</span></div>
+            <span>total {{ dadosEventos?.data?.total }}</span>
+          </div>
+          <div class="container-listas-series">
+            <div class="dados-serie"*ngFor="let item of dadosEventos?.data?.results">
+              <h3 *ngIf="item.title">{{ item.title }}</h3>
+              <span *ngIf="item.startYear">Ano {{ item.startYear }}</span>
+              <img src="{{ item.thumbnail.path + '.' + item.thumbnail.extension }}" alt="" (click)="abrirNavegador(item.urls[0].url)"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-informacoes">
+        <span *ngIf="maisDetalhes" (click)="abrirNavegador(maisDetalhes)">Mais detalhes</span>
+        <span *ngIf="wiki" (click)="abrirNavegador(wiki)">Wiki</span>
+        <span *ngIf="comic" (click)="abrirNavegador(comic)">Comic</span>
+      </div>
+    </div>
+  </div>
+</div>
